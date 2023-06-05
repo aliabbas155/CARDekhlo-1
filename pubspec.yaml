@@ -1,0 +1,86 @@
+name: car_dekh_lo
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  carousel_nullsafety: ^0.1.1
+  supercharged: ^2.1.1
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5
+  firebase_auth: ^4.2.0
+  firebase_core: ^2.4.0
+  google_fonts: ^4.0.3
+  cloud_firestore: ^4.2.0
+  fluttertoast: ^8.1.2
+  image_picker: ^0.8.6
+  firebase_storage: ^11.0.7
+  permission_handler: ^10.2.0
+  file_picker: ^5.2.4
+  simple_animations: ^4.0.1
+  photo_gallery: ^1.1.1
+  galleryimage: ^1.2.0
+  logger: ^1.3.0
+  searchable_listview: ^2.2.2
+  ndialog: ^4.3.0
+  flutter_screenutil: ^5.7.0
+  cached_network_image: ^3.2.3
+  firebase_database: ^10.0.16
+  google_maps_flutter: ^2.2.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/imagesSpareParts/
+    - assets/images/
+    - assets/images/penta.jpg
+    - assets/images/sell.jpg
+    - assets/images/spare.jpg
+    - assets/images/carbuy.png
+    - assets/images/compre.jpg
+    - assets/images/car.jpg
+    - assets/images/auction.png
+
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fontsSpareParts/Raleway-Regular.ttf
+        - asset: assets/fontsSpareParts/Raleway-Bold.ttf
+          weight: 700
+        - asset: assets/fontsSpareParts/Raleway-Bold.ttf
+          weight: 900
+
+    - family: RobotoCondensed-Bold
+      fonts:
+        - asset: assets/fontsSpareParts/RobotoCondensed-Regular.ttf
+        - asset: assets/fontsSpareParts/RobotoCondensed-Bold.ttf
+          weight: 700
+        - asset: assets/fontsSpareParts/RobotoCondensed-Light.ttf
+          weight: 300
+        - asset: assets/fontsSpareParts/RobotoCondensed-Italic.ttf
+          style: italic
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-VariableFont_wght.ttf
+
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/Pacifico-Regular.ttf
+
+    - family: Kanit
+      fonts:
+        - asset: assets/fonts/Kanit-Black.ttf
