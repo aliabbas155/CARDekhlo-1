@@ -1,3 +1,4 @@
+import 'package:car_dekh_lo/Model/showroom_model.dart';
 import 'package:car_dekh_lo/config/firebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
@@ -31,19 +32,20 @@ class MapController extends GetxController {
       log.e(e);
     }
   }
-  // Future<ShowRoomModel> getGoogleOffices() async {
-  // const googleLocationsURL = 'https://about.google/static/data/locations.json';
 
-  // // Retrieve the locations of Google offices
-  // try {
-  //   final response = await firestore.get(Uri.parse(googleLocationsURL));
-  //   if (response.statusCode == 200) {
-  //     return ShowRoomModel.fromJson(
-  //         json.decode(response.body) as Map<String, dynamic>);
-  //   }
-  // } catch (e) {
-  //   if (kDebugMode) {
-  //     print(e);
-  //   }
-  // }
+  Future<List<ShowRoomModel>> fetchClubs() async {
+    var data = await firestore
+        .collection('showroom')
+        .orderBy(
+          'name',
+        )
+        .get();
+    log.d(data.docs.map((e) => log.d(ShowRoomModel.fromSnapshot(e))));
+    try {
+      return List.from(data.docs.map((e) => ShowRoomModel.fromSnapshot(e)));
+    } catch (e) {
+      log.e(e);
+      return [];
+    }
+  }
 }

@@ -6,13 +6,11 @@ import 'package:get/get.dart';
 import '../../Components/constants.dart';
 import '../add_car_details_page.dart';
 import '../compare_screen.dart';
+import '../showroom/show_room_screen.dart';
 import '../sparePartsPage/spare.dart';
 import '../view_ad_page.dart';
 import 'custom_tabbar.dart';
-import 'detail_page.dart';
 import 'theme.dart';
-
-
 
 class HomePage extends StatelessWidget {
   final List<String> images = [
@@ -21,7 +19,6 @@ class HomePage extends StatelessWidget {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY2dNfVnWBqaYIaEPWqeVYhetkEmgKXyAozQ&usqp=CAU',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm_QYRfv6q0f-ogG0Vw3WleWyLVyT8eBI2-mKYCuuvyduecJpsr00yHW6KWqInEtoc_sM&usqp=CAU',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyAjqBBmth-AJXgjr-ekTEONDOhIoclPnGJA&usqp=CAU',
-
     'https://www.cnet.com/a/img/resize/1e024a01ae63e402e22da463926bc11f04a1a909/hub/2021/06/25/ef1fc0ac-d839-4579-a846-8759f5cdafc0/2022-honda-civic-sport-sedan-007.jpg?auto=webp&width=1920',
   ];
 
@@ -123,11 +120,7 @@ class HomePage extends StatelessWidget {
                   .toList(),
             ),
           ),
-          Column(
-            children: const [
-              TopMenus(),
-            ],
-          ),
+          const TopMenus(),
           Container(
             margin: const EdgeInsets.only(left: 21, bottom: 0, top: 10),
             child: Text(
@@ -138,7 +131,7 @@ class HomePage extends StatelessWidget {
           ),
           CatagoriesListBuild(
             onClicked: () {
-              Get.to(const DetailPage());
+              Get.to(() => const ShowRoomScreen());
             },
             title: 'Buy New Car',
             subtitle: 'With CarDekhlo',

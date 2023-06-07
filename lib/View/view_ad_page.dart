@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:galleryimage/galleryimage.dart';
 
 import '../Model/ad_data.dart';
@@ -92,7 +93,6 @@ Widget buildCarAd(AdData adData) => Padding(
                 subtitle: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Text(
-
                     adData.carLocation,
                   ),
                 ),
@@ -143,7 +143,7 @@ TableRow buildRow(String main, String sub) {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
         child: Text(
           main,
-          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 0.02.sh, fontWeight: FontWeight.bold),
         ),
       ),
       Padding(
@@ -151,7 +151,7 @@ TableRow buildRow(String main, String sub) {
         child: Text(
           sub,
           textAlign: TextAlign.start,
-          style: TextStyle(color: Colors.blue),
+          style: TextStyle(color: Colors.blue, fontSize: 0.02.sh),
         ),
       ),
     ],

@@ -1,6 +1,8 @@
 import 'package:car_dekh_lo/View/register_pages/verify_email.dart';
+import 'package:car_dekh_lo/config/app_colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
@@ -32,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         autofocus: false,
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
+        autofillHints: const [AutofillHints.email],
         validator: (value) {
           if (value!.isEmpty) {
             return ("Please Enter Your Email");
@@ -62,6 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
     final passwordField = TextFormField(
         autofocus: false,
         controller: passwordController,
+        enableSuggestions: true,
+        autofillHints: const [AutofillHints.password],
         obscureText: true,
         validator: (value) {
           RegExp regex = RegExp(r'^.{6,}$');
@@ -108,62 +113,106 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Form(
+      // appBar: AppBar(),
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: true,
+      backgroundColor: AppColors.lightBackColor,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            children: [
+              SizedBox(
+                height: 0.04.sh,
+              ),
+              SizedBox(
+                height: 0.25.sh,
+                width: 0.45.sw,
+                child: Image.asset(
+                  "assets/images/circle.png",
+                  fit: BoxFit.contain,
+                  // color: AppColors.,
+                  alignment: Alignment.center,
+                ),
+              ),
+              SizedBox(
+                height: 0.04.sh,
+              ),
+              Text(
+                "Car Dekhlo",
+                style: Get.textTheme.displaySmall?.copyWith(
+                    fontFamily: 'Raleway',
+                    fontSize: 40.sp,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textColor),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 0.035.sh,
+              ),
+              Form(
                 key: _formKey,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                        height: 250,
-                        child: Image.asset(
-                          "assets/images/circle.png",
-                          fit: BoxFit.contain,
-                        )),
-                    const SizedBox(height: 45),
+                  children: [
                     emailField,
-                    const SizedBox(height: 25),
+                    SizedBox(
+                      height: 0.04.sh,
+                    ),
                     passwordField,
-                    const SizedBox(height: 35),
-                    loginButton,
-                    const SizedBox(height: 15),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          const Text("Don't have an account? "),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const RegistrationScreen()));
-                            },
-                            child: const Text(
-                              "SignUp",
-                              style: TextStyle(
-                                  color: Colors.redAccent,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
-                            ),
-                          )
-                        ])
                   ],
                 ),
               ),
-            ),
+              SizedBox(
+                height: 0.04.sh,
+              ),
+              loginButton,
+              SizedBox(
+                height: 0.04.sh,
+              ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text("Don't have an account? "),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const RegistrationScreen()));
+                      },
+                      child: const Text(
+                        "SignUp",
+                        style: TextStyle(
+                            color: Colors.redAccent,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15),
+                      ),
+                    )
+                  ]),
+            ],
           ),
         ),
       ),
     );
   }
+
+  // return Scaffold(
+  //   backgroundColor: Colors.white,
+  //   body: SizedBox(
+  //     height: 1.sh,
+  //     width: 1.sw,
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //       children: <Widget>[
+
+  //       ],
+  //     ),
+  //   ),
+  // );
 
   // login function
   void signIn(String email, String password) async {

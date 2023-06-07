@@ -45,35 +45,39 @@ Stream<List<AdData>> readAdData() =>
     firestore.collection(kAdsData).snapshots().map((snapshot) =>
         snapshot.docs.map((doc) => AdData.fromMap(doc.data())).toList());
 
-void uploadCars(
-  String id,
-  String company,
-  String model,
-  String engine,
-  String seats,
-  String average,
-  String body,
-  String suspension,
-  List<dynamic> images,
-) async {
-  final reference = FirebaseFirestore.instance.collection(kCarCollection).doc();
+// void uploadCars(
+//   String id,
+//   String company,
+//   String model,
+//   String gearType,
+//   String horsePower,
+//   String engine,
+//   String seats,
+//   String average,
+//   String body,
+//   String suspension,
+//   List<dynamic> images,
+// ) async {
+//   final reference = FirebaseFirestore.instance.collection(kCarCollection).doc();
 
-  final cars = CarModel(
-      id: id,
-      company: company,
-      model: model,
-      engine: engine,
-      seats: seats,
-      average: average,
-      body: body,
-      suspension: suspension,
-      images: images);
-  final json = cars.toMap();
-  await reference.set(json).onError((error, stackTrace) =>
-      Fluttertoast.showToast(msg: 'Somthing went wrong'));
+//   final cars = CarModel(
+//       id: id,
+//       company: company,
+//       model: model,
+//       engine: engine,
+//       seats: seats,
+//       average: average,
+//       body: body,
+//       suspension: suspension,
+//       images: images,
+//       gearType: gearType,
+//       horsePower: horsePower);
+//   final json = cars.toMap();
+//   await reference.set(json).onError((error, stackTrace) =>
+//       Fluttertoast.showToast(msg: 'Somthing went wrong'));
 
-  Fluttertoast.showToast(msg: 'Uploaded Successfully');
-}
+//   Fluttertoast.showToast(msg: 'Uploaded Successfully');
+// }
 
 Stream<List<CarModel>> readCars() =>
     firestore.collection(kCarCollection).snapshots().map((snapshot) =>
