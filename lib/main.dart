@@ -1,5 +1,6 @@
 import 'package:car_dekh_lo/Controller/map_controller.dart';
-import 'package:car_dekh_lo/View/homePage/home_page.dart';
+import 'package:car_dekh_lo/View/showroom/home_controller.dart';
+import 'package:car_dekh_lo/widget_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +15,7 @@ Future<void> main() async {
   await initialization.then((value) {
     Get.put(CarController());
     Get.lazyPut(() => MapController());
+    Get.lazyPut(() => HomeController());
   });
   runApp(const MyApp());
 }
@@ -100,7 +102,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: HomePage(),
+      child: const FirstScreen(),
     );
   }
 }

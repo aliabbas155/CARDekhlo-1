@@ -1,4 +1,5 @@
 import 'package:car_dekh_lo/View/auction/auction.dart';
+import 'package:car_dekh_lo/View/showroom/show_screen.dart';
 import 'package:carousel_nullsafety/carousel_nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,6 @@ import 'package:get/get.dart';
 import '../../Components/constants.dart';
 import '../add_car_details_page.dart';
 import '../compare_screen.dart';
-import '../showroom/show_room_screen.dart';
 import '../sparePartsPage/spare.dart';
 import '../view_ad_page.dart';
 import 'custom_tabbar.dart';

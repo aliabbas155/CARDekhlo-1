@@ -5,8 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:ndialog/ndialog.dart';
 
-import '../../Components/constants.dart';
 import '../../Model/user_model.dart';
+import '../../config/constants.dart';
 import 'verify_email.dart';
 
 class RegistrationScreen extends StatefulWidget {

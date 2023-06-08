@@ -1,6 +1,4 @@
-import 'package:car_dekh_lo/Controller/map_controller.dart';
-
-import '../Controller/car_controller.dart';
+import 'package:logger/logger.dart';
 
 String penta = 'assets/penta.jpg';
 String logo = 'assets/logo.png';
@@ -10,5 +8,7 @@ const kAdsData = 'AdsData';
 
 const kCarCollection = 'cars';
 
-CarController carController = CarController.instance;
-MapController mapController = MapController.instance;
+Logger log = Logger();
+
+const kLocationAccessText =
+    'This app collects location data to enable identification of nearby available drivers to Restaurants and Order Delivery only when the app is in use.';

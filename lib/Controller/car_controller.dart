@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_cast
 
-import 'package:car_dekh_lo/Components/constants.dart';
+
 import 'package:car_dekh_lo/config/constants.dart';
 import 'package:car_dekh_lo/config/firebase.dart';
 import 'package:car_dekh_lo/services/toast_dialogs.dart';
