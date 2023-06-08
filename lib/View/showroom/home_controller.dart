@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:car_dekh_lo/View/auction/auction.dart';
 import 'package:car_dekh_lo/config/constants.dart';
 import 'package:car_dekh_lo/config/controllers.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,11 @@ import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../config/app_colors.dart';
+import 'detail_screen.dart';
 import 'permissions/app_permission_controller.dart';
 import 'permissions/toast_dialogs.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxService {
   static HomeController instance = Get.find();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -33,7 +35,7 @@ class HomeController extends GetxController {
   // var currentPolyline = (null as ).obs;
   var currentLat = 0.0.obs;
   var currentLong = 0.0.obs;
-  var zoomLevel = 14.0.obs;
+  var zoomLevel = 32.0.obs;
   var allMarkers = <Marker>[].obs;
   var startLocation = Rxn<LatLng>();
   var endLocation = Rxn<LatLng>();
@@ -52,15 +54,15 @@ class HomeController extends GetxController {
     setCustomMarkerIcon();
   }
 
-  @override
-  void onClose() {
-    log.d("on Home dispose");
-    //  Get.delete<HomeController>();
-    resetValues();
-    googleMapController.dispose();
-    locationSubscription.cancel();
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   log.d("on Home dispose");
+  //   //  Get.delete<HomeController>();
+  //   resetValues();
+  //   // googleMapController.dispose();
+  //   // locationSubscription.cancel();
+  //   super.onClose();
+  // }
 
 //sets custom markers on map for users
   void setCustomMarkerIcon() async {
@@ -72,6 +74,7 @@ class HomeController extends GetxController {
         .then((value) {
       currentLocationIcon = value;
     });
+    addShowRoomMarkers();
   }
 
   //sets the camera view to delivery markers if an order is received
@@ -118,25 +121,32 @@ class HomeController extends GetxController {
 
   //adds markers for delivery locations
   addShowRoomMarkers() async {
-    final clubsList = await mapController.fetchClubs();
+    final showRoomList = await mapController.fetchClubs();
 
     allMarkers.clear();
-    for (final club in clubsList) {
+    for (final showRoom in showRoomList) {
       final marker = Marker(
-        markerId: MarkerId(club.id),
+        markerId: MarkerId(showRoom.id),
         visible: true,
-        position: LatLng(club.address.latitude, club.address.longitude),
+        position: LatLng(showRoom.address.latitude, showRoom.address.longitude),
         infoWindow: InfoWindow(
-            title: club.name,
-            snippet: club.description,
+            title: showRoom.name,
+            snippet: showRoom.description,
             onTap: () {
-              log.d(club);
+              if (showRoom.id == 'JtTMOhIfRSJOl3kcQhrf') {
+                log.d(showRoom);
+                Get.to(
+                  () => DetailScreen(
+                    showroom: showRoom,
+                  ),
+                );
+              } else if (showRoom.id == 'xDJ5mfWImQaq9lHrZS9b') {
+                log.d(showRoom);
+                Get.to(
+                  () => const AuctionData(),
+                );
+              }
 //TODO: add go to screen of showroom here
-              // Get.to(
-              //     () => EntryInfoScreen(
-              //           club: club,
-              //         ),
-              //     transition: Transition.native);
             }),
       );
       allMarkers.add(marker);
@@ -150,7 +160,7 @@ class HomeController extends GetxController {
     controller = Completer();
     currentLat.value = 0.0;
     currentLong.value = 0.0;
-    zoomLevel.value = 16.0;
+    zoomLevel.value = 32.0;
     startLocation.value = null;
 
     endLocation.value = null;
@@ -207,19 +217,19 @@ class HomeController extends GetxController {
 
       googleMapController.animateCamera(CameraUpdate.newCameraPosition(
           CameraPosition(
-              target: LatLng(currentLat.value, currentLong.value), zoom: 16)));
-      locationSubscription = location.onLocationChanged.listen((newLoc) {
-        _updateLatLng(newLoc);
+              target: LatLng(currentLat.value, currentLong.value), zoom: 32)));
+      // locationSubscription = location.onLocationChanged.listen((newLoc) {
+      //   _updateLatLng(newLoc);
 
-        googleMapController.animateCamera(
-          CameraUpdate.newCameraPosition(
-            CameraPosition(
-                //-0
-                target: LatLng(currentLat.value, currentLong.value),
-                zoom: 16),
-          ),
-        );
-      });
+      //   googleMapController.animateCamera(
+      //     CameraUpdate.newCameraPosition(
+      //       CameraPosition(
+      //           //-0
+      //           target: LatLng(currentLat.value, currentLong.value),
+      //           zoom: 16),
+      //     ),
+      //   );
+      // });
     } catch (e) {
       log.e(e);
 

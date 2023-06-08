@@ -24,7 +24,7 @@ class LoadingAnimation extends StatelessWidget {
                     fit: BoxFit.contain,
                     width: 0.3.sw,
                     height: 0.3.sw,
-                    color: Colors.white,
+                    // color: Colors.redAccent,
                     alignment: Alignment.center,
                   ),
             )));

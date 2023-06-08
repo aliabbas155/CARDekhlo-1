@@ -18,7 +18,9 @@ class ShowRoomScreen extends StatelessWidget {
       // extendBody: true,
       key: homeController.scaffoldKey,
       extendBodyBehindAppBar: true,
-
+      appBar: AppBar(
+        title: const Text('ShowRoom'),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: const LocationButton(),
       body: Obx(
