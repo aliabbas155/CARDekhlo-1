@@ -9,10 +9,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../config/app_colors.dart';
-import 'detail_screen.dart';
-import 'permissions/app_permission_controller.dart';
-import 'permissions/toast_dialogs.dart';
+import '../View/showroom/detail_screen.dart';
+import '../View/showroom/permissions/app_permission_controller.dart';
+import '../View/showroom/permissions/toast_dialogs.dart';
+import '../config/app_colors.dart';
+
 
 class HomeController extends GetxService {
   static HomeController instance = Get.find();

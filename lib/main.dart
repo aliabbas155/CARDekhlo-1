@@ -1,5 +1,5 @@
 import 'package:car_dekh_lo/Controller/map_controller.dart';
-import 'package:car_dekh_lo/View/showroom/home_controller.dart';
+import 'package:car_dekh_lo/Controller/home_controller.dart';
 import 'package:car_dekh_lo/widget_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
